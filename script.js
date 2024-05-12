@@ -7,7 +7,6 @@ for (let i = 0; i < 16; i++) {
     for (let j = 0; j < 16; j++) {
         const innerDiv = document.createElement('div');
         innerDiv.className = 'innerDiv';
-        innerDiv.setAttribute('draggable', false)
         rows.append(innerDiv);
     }
 }
@@ -15,6 +14,9 @@ for (let i = 0; i < 16; i++) {
 const divs = document.querySelectorAll('.innerDiv');
 divs.forEach(div => {
     div.addEventListener('mouseover', () => {
-        div.style.backgroundColor = 'black';
+        const red = Math.floor(Math.random() * 256)
+        const green = Math.floor(Math.random() * 256)
+        const blue = Math.floor(Math.random() * 256)
+        div.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
     });
 });
