@@ -46,6 +46,8 @@ gridSizeButton.addEventListener('click', () => {
         gridSize = Number(prompt("Enter size from 1 to 100:"));
         if (gridSize>0 && gridSize<101)
             break;
+        else if (gridSize == 0 || gridSize == null)
+            break
         else
             continue;
     }
