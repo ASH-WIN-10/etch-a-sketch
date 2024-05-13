@@ -16,17 +16,27 @@ function colorGrid() {
     //Clearing the canvas and color on hover logic
     const divs = document.querySelectorAll('.innerDiv');
     const resetButton = document.querySelector('#reset');
+    const colorButton = document.querySelector('#color');
+    const eraserButton = document.querySelector('#eraser');
+    let eraserBool = false;
 
     divs.forEach(div => {
         div.addEventListener('mouseover', () => {
-            const red = Math.floor(Math.random() * 256);
-            const green = Math.floor(Math.random() * 256);
-            const blue = Math.floor(Math.random() * 256);
+            eraserButton.addEventListener('click', () => eraserBool = true);
+            colorButton.addEventListener('click', () => eraserBool = false);
+
+            let red, green, blue;
+            if (eraserBool)
+                [red, green, blue] = [255, 255, 255];
+            else {
+                red = Math.floor(Math.random() * 256);
+                green = Math.floor(Math.random() * 256);
+                blue = Math.floor(Math.random() * 256);
+            }
+            
             div.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-            resetButton.addEventListener('click', () => {
-                div.style.backgroundColor = 'white';
-            });
         });
+        resetButton.addEventListener('click', () => div.style.backgroundColor = 'white');
     });
 }
 
