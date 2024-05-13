@@ -41,8 +41,9 @@ function colorGrid() {
 }
 
 
-const gridSizeButton = document.querySelector('#changeGridSize');
-gridSizeButton.addEventListener('click', () => {
+const gridSize = document.querySelector('#changeGridSize');
+gridSize.value = 16;   //Default value
+gridSize.addEventListener('input', (e) => {
     //Remove existing rows and divs
     const container = document.querySelector('.container');
     const existingRows = document.querySelectorAll('.container>*');
@@ -50,20 +51,8 @@ gridSizeButton.addEventListener('click', () => {
         container.removeChild(row);
     });
     
-    //Getting the size of the grid
-    let gridSize;
-    while (1){
-        gridSize = Number(prompt("Enter size from 1 to 100:"));
-        if (gridSize>0 && gridSize<101)
-            break;
-        else if (gridSize == 0 || gridSize == null)
-            break
-        else
-            continue;
-    }
-    
     //Creating the grid
-    createGrid(gridSize);
+    createGrid(e.target.value);
     colorGrid();
 });
 
