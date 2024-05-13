@@ -57,3 +57,7 @@ button {
 button:hover {
     background-color: aliceblue;
 }
+
+button:active {
+    transform: scale(1.1);
+}
